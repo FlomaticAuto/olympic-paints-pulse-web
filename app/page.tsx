@@ -1,65 +1,102 @@
-import Image from "next/image";
+import { getLeaderboard, formatMoney, formatPct, type LeaderboardRow } from "@/lib/data";
 
-export default function Home() {
+function rankTone(rank: number, total: number): { row: string; rank: string; accent: string } {
+  if (rank <= 2) {
+    return {
+      row: "bg-[color-mix(in_srgb,var(--color-teal)_18%,transparent)]",
+      rank: "text-[#7AC97A]",
+      accent: "border-l-[var(--color-teal)]",
+    };
+  }
+  if (rank >= Math.max(3, total - 1)) {
+    return {
+      row: "bg-[color-mix(in_srgb,var(--color-coral)_18%,transparent)]",
+      rank: "text-[#FF8585]",
+      accent: "border-l-[var(--color-coral)]",
+    };
+  }
+  return { row: "", rank: "", accent: "border-l-transparent" };
+}
+
+function RepCard({ row, rank, total }: { row: LeaderboardRow; rank: number; total: number }) {
+  const tone = rankTone(rank, total);
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <li
+      className={`rounded-xl border-l-4 ${tone.accent} ${tone.row}`}
+      style={{ background: "var(--surface-elevated)", borderColor: "var(--border-subtle)" }}
+    >
+      <div className="flex items-center justify-between gap-3 px-4 py-3">
+        <div className="flex items-baseline gap-3 min-w-0">
+          <span className={`font-[family-name:var(--font-display)] font-black text-2xl ${tone.rank}`}
+                style={{ color: tone.rank ? undefined : "var(--text-primary)" }}>
+            #{rank}
+          </span>
+          <div className="min-w-0">
+            <div className="font-semibold text-base truncate" style={{ color: "var(--text-primary)" }}>
+              {row.name}
+            </div>
+            <div className="text-xs truncate" style={{ color: "var(--text-tertiary)" }}>
+              {row.rep} · streak {row.ack_streak}d · plan {formatPct(row.plan_adherence)}
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <div className="text-right shrink-0">
+          <div className="font-[family-name:var(--font-display)] font-bold text-base whitespace-nowrap"
+               style={{ color: "var(--text-primary)" }}>
+            {formatMoney(row.mtd_sales)}
+          </div>
+          <div className="text-xs font-semibold" style={{ color: "var(--text-secondary)" }}>
+            {formatPct(row.pct_target)} of target
+          </div>
         </div>
-      </main>
+      </div>
+    </li>
+  );
+}
+
+export default function LeaderboardPage() {
+  const { rows, last_updated_iso } = getLeaderboard();
+  const sorted = [...rows].sort((a, b) => b.pct_target - a.pct_target);
+
+  return (
+    <div className="space-y-6">
+      <header>
+        <h1 className="font-[family-name:var(--font-display)] font-black text-2xl md:text-3xl uppercase tracking-wide"
+            style={{ color: "var(--text-primary)" }}>
+          PULSE Leaderboard
+        </h1>
+        <p className="text-sm" style={{ color: "var(--text-secondary)" }}>
+          Olympic Paints sales team · live performance
+        </p>
+        <p className="text-xs mt-1" style={{ color: "var(--text-tertiary)" }}>
+          Last updated {new Date(last_updated_iso).toLocaleString("en-ZA", { dateStyle: "medium", timeStyle: "short" })}
+        </p>
+      </header>
+
+      <section
+        className="rounded-xl border-l-4 px-4 py-3"
+        style={{ background: "var(--surface-elevated)", borderColor: "var(--brand-primary)" }}
+      >
+        <h2 className="font-[family-name:var(--font-display)] font-bold text-[11px] uppercase tracking-widest"
+            style={{ color: "var(--text-tertiary)" }}>
+          How to read this
+        </h2>
+        <p className="text-sm leading-relaxed mt-2" style={{ color: "var(--text-secondary)" }}>
+          Reps are ranked by <strong style={{ color: "var(--text-primary)" }}>% of monthly target</strong>, not raw
+          sales — so a rep with a smaller book is judged on the same scale as one with a bigger book. Top 2 in green,
+          bottom 2 in red.
+        </p>
+      </section>
+
+      <ul className="space-y-2">
+        {sorted.map((r, i) => (
+          <RepCard key={r.rep} row={r} rank={i + 1} total={sorted.length} />
+        ))}
+      </ul>
+
+      <footer className="text-center text-xs pt-4 pb-2" style={{ color: "var(--text-tertiary)" }}>
+        Olympic Paints PULSE · Reply to your daily PULSE email with questions.
+      </footer>
     </div>
   );
 }

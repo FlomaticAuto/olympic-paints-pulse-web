@@ -1,26 +1,83 @@
 @import "tailwindcss";
 
+/* ── Olympic Paints design tokens ──────────────────────────────────────── */
+@theme {
+  --font-display: "Barlow Condensed", system-ui, sans-serif;
+  --font-body: "Barlow", system-ui, sans-serif;
+
+  /* Yellow ramp */
+  --color-y50: #FEF9E0;
+  --color-y100: #FDF0A0;
+  --color-y200: #FAE04D;
+  --color-y400: #F5C400;
+  --color-y600: #D4A800;
+  --color-y800: #A88000;
+  --color-y900: #6A5000;
+
+  /* Navy ramp */
+  --color-n50: #E8EFF8;
+  --color-n100: #B8CCE8;
+  --color-n300: #6B9ED0;
+  --color-n500: #2D6BA8;
+  --color-n700: #1A3D6E;
+  --color-n900: #0D2040;
+  --color-n950: #071022;
+
+  /* Neutral ramp */
+  --color-g0: #FFFFFF;
+  --color-g50: #F7F6F3;
+  --color-g100: #E8E7E2;
+  --color-g400: #949390;
+  --color-g600: #5C5B58;
+  --color-g900: #1A1A18;
+  --color-g950: #0D0D0B;
+
+  /* Accents */
+  --color-teal: #2D8C7A;
+  --color-teal-light: #C8EDE7;
+  --color-coral: #E86060;
+  --color-coral-light: #FDDCDC;
+  --color-terra: #C97A3A;
+}
+
+/* ── Navy executive theme (default for PULSE web) ──────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: dark;
+  --surface-page: var(--color-n950);
+  --surface-base: var(--color-n900);
+  --surface-elevated: var(--color-n700);
+  --surface-sunken: var(--color-n950);
+
+  --text-primary: var(--color-g0);
+  --text-secondary: var(--color-n100);
+  --text-tertiary: var(--color-n300);
+  --text-on-brand: var(--color-g950);
+
+  --brand-primary: var(--color-y400);
+  --brand-hover: var(--color-y200);
+
+  --border-subtle: color-mix(in srgb, var(--color-n300) 12%, transparent);
+  --border-default: color-mix(in srgb, var(--color-n300) 20%, transparent);
+  --border-strong: color-mix(in srgb, var(--color-n300) 35%, transparent);
+
+  --success-bg: color-mix(in srgb, var(--color-teal) 15%, transparent);
+  --success-fg: var(--color-teal-light);
+  --warning-bg: color-mix(in srgb, var(--color-y400) 12%, transparent);
+  --warning-fg: var(--color-y200);
+  --danger-bg: color-mix(in srgb, var(--color-coral) 14%, transparent);
+  --danger-fg: var(--color-coral-light);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background: var(--surface-page);
+  color: var(--text-primary);
+  font-family: var(--font-body);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--surface-page);
+  min-height: 100dvh;
 }
+
+/* Headings default to Barlow Condensed */
+h1, h2, h3, h4, h5 { font-family: var(--font-display); }
