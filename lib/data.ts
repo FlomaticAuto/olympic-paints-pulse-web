@@ -165,7 +165,11 @@ export async function getDaily(date: string, rep: RepCode): Promise<DailyMailerD
 // ── Formatters ───────────────────────────────────────────────────────────────
 
 export function formatMoney(v: number): string {
-  return `R ${v.toLocaleString("en-ZA").replace(/,/g, " ")}`;
+  // Whole rand, space thousands. We don't rely on toLocaleString here because
+  // en-ZA uses comma as the decimal separator (not thousands) which made our
+  // earlier locale-based output read as "R 1 347 988 21" instead of "R 1 347 988".
+  const n = Math.round(v).toString();
+  return `R ${n.replace(/\B(?=(\d{3})+(?!\d))/g, " ")}`;
 }
 
 export function formatPct(v: number): string {
