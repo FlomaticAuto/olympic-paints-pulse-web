@@ -4,7 +4,7 @@ type Params = { date: string };
 
 export default async function ScorecardPage({ params }: { params: Promise<Params> }) {
   const { date } = await params;
-  const { period_label, summary, rep_rows } = getScorecard(date);
+  const { period_label, summary, rep_rows } = await getScorecard(date);
   const sorted = [...rep_rows].sort((a, b) => b.pct_target - a.pct_target);
 
   return (

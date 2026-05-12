@@ -1,0 +1,18 @@
+{
+  "rep": "BV",
+  "rep_name": "Bhadresh Vallabh",
+  "date_label": "Tue 12 May 2026",
+  "cycle_label": "BV1 · Day 2/5",
+  "mtd_sales": 1347988.21,
+  "mtd_target": 5716297.366,
+  "rank": 3,
+  "plan_adherence_mtd": 0.0,
+  "yesterday_sales": 246596.47,
+  "yesterday_leads": 0,
+  "yesterday_visited_stores": [
+    "Berario hw",
+    "Hardware center honeydew",
+    "Jack’s parents black heath"
+  ],
+  "yesterday_visits_total": 3
+}

@@ -54,8 +54,8 @@ function RepCard({ row, rank, total }: { row: LeaderboardRow; rank: number; tota
   );
 }
 
-export default function LeaderboardPage() {
-  const { rows, last_updated_iso } = getLeaderboard();
+export default async function LeaderboardPage() {
+  const { rows, last_updated_iso } = await getLeaderboard();
   const sorted = [...rows].sort((a, b) => b.pct_target - a.pct_target);
 
   return (

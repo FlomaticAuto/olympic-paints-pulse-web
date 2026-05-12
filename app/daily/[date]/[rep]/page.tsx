@@ -12,7 +12,7 @@ function isRepCode(value: string): value is RepCode {
 export default async function DailyPage({ params }: { params: Promise<Params> }) {
   const { date, rep } = await params;
   if (!isRepCode(rep)) notFound();
-  const data = getDaily(date, rep);
+  const data = await getDaily(date, rep);
   if (!data) notFound();
 
   const pctTarget = data.mtd_target ? data.mtd_sales / data.mtd_target : 0;

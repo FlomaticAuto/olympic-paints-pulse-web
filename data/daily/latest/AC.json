@@ -1,0 +1,26 @@
+{
+  "rep": "AC",
+  "rep_name": "Aboo Cassim",
+  "date_label": "Tue 12 May 2026",
+  "cycle_label": "AC1 · Day 2/5",
+  "mtd_sales": 236097.77000000002,
+  "mtd_target": 1748690.7750000001,
+  "rank": 4,
+  "plan_adherence_mtd": 0.3333333333333333,
+  "yesterday_sales": 22160.840000000004,
+  "yesterday_leads": 0,
+  "yesterday_visited_stores": [
+    "Golden Hardware",
+    "Hyper Steel",
+    "Jiva auto paints",
+    "Kaz Hardware",
+    "Lenasia Quick Build",
+    "Maliks Paint & Hardware",
+    "Norman’s Hardware",
+    "Nu Shop Hardware",
+    "Power Build (×3)",
+    "Quick Build Hardware",
+    "Top Hardware & Steel"
+  ],
+  "yesterday_visits_total": 13
+}

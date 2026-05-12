@@ -1,0 +1,21 @@
+{
+  "rep": "NP",
+  "rep_name": "Nikhil Panchal",
+  "date_label": "Tue 12 May 2026",
+  "cycle_label": "NP1 · Day 2/5",
+  "mtd_sales": 1310336.6600000001,
+  "mtd_target": 5358855.216000001,
+  "rank": 2,
+  "plan_adherence_mtd": 0.0,
+  "yesterday_sales": 410.33,
+  "yesterday_leads": 0,
+  "yesterday_visited_stores": [
+    "Check-in at 10:23 AM on 11 May 2026",
+    "Check-in at 11:31 AM on 11 May 2026",
+    "Check-in at 12:28 PM on 11 May 2026",
+    "Check-in at 12:58 PM on 11 May 2026",
+    "Check-in at 1:32 PM on 11 May 2026",
+    "Check-in at 9:25 AM on 11 May 2026"
+  ],
+  "yesterday_visits_total": 6
+}
