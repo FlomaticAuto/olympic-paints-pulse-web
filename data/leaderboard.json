@@ -1,5 +1,5 @@
 {
-  "last_updated_iso": "2026-05-12T23:06:04+02:00",
+  "last_updated_iso": "2026-05-13T09:01:23+02:00",
   "rows": [
     {
       "rep": "AC",
@@ -7,7 +7,7 @@
       "mtd_sales": 236097.77000000002,
       "mtd_target": 1748690.7750000001,
       "pct_target": 0.13501401927393367,
-      "plan_adherence": 0.3333333333333333,
+      "plan_adherence": 0.0,
       "ack_streak": 0
     },
     {
