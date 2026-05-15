@@ -1,20 +1,20 @@
 {
   "period_label": "Mon 25 Apr → Fri 08 May 2026",
   "summary": {
-    "team_mtd": 4436327.29,
-    "team_pct_target": 0.3258663768564403,
+    "team_mtd": 4430728.82,
+    "team_pct_target": 0.32545514634624967,
     "team_visits_actual": 146,
-    "team_visits_planned": 90,
+    "team_visits_planned": 70,
     "team_acks": 0,
     "team_acks_required": 70,
-    "team_plan_adherence": 1.6222222222222222
+    "team_plan_adherence": 2.085714285714286
   },
   "rep_rows": [
     {
       "rep": "AC",
       "name": "Aboo Cassim",
-      "sales": 340809.78,
-      "pct_target": 0.194894251672369,
+      "sales": 337906.02999999997,
+      "pct_target": 0.19323372366964076,
       "visits_actual": 35,
       "visits_planned": 20,
       "plan_adherence": 1.0,
@@ -37,11 +37,11 @@
     {
       "rep": "BV",
       "name": "Bhadresh Vallabh",
-      "sales": 1718489.04,
-      "pct_target": 0.300629748588905,
+      "sales": 1715794.3199999998,
+      "pct_target": 0.3001583385436495,
       "visits_actual": 17,
-      "visits_planned": 20,
-      "plan_adherence": 0.85,
+      "visits_planned": 10,
+      "plan_adherence": 1.0,
       "leads": 0,
       "new_stores": 0,
       "ack_pct": 0.0
@@ -52,7 +52,7 @@
       "sales": 1777720.34,
       "pct_target": 0.33173509422166103,
       "visits_actual": 20,
-      "visits_planned": 20,
+      "visits_planned": 10,
       "plan_adherence": 1.0,
       "leads": 0,
       "new_stores": 0,
