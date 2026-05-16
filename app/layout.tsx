@@ -22,12 +22,20 @@ const barlowCondensed = Barlow_Condensed({
 export const metadata: Metadata = {
   title: "PULSE — Olympic Paints",
   description: "Live sales performance for the Olympic Paints team.",
+  applicationName: "PULSE",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "PULSE",
+  },
+  formatDetection: { telephone: false },
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
+  viewportFit: "cover",
   themeColor: "#071022",
 };
 
