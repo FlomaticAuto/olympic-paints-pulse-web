@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import type { ReactNode } from "react";
 
-type NavItem = { href: string; label: string };
+type NavItem = { href: string; label: string; external?: boolean };
 
 const NAV: NavItem[] = [
   { href: "/", label: "Leaderboard" },
@@ -12,6 +12,7 @@ const NAV: NavItem[] = [
   { href: "/daily/latest/BV", label: "Daily — Bhadresh Vallabh" },
   { href: "/daily/latest/NP", label: "Daily — Nikhil Panchal" },
   { href: "/daily/latest/BM", label: "Daily — Byron Minnie" },
+  { href: "https://op-merch-calendar.vercel.app/", label: "Merch Calendar ↗", external: true },
 ];
 
 export default function DesktopLayout({ children }: { children: ReactNode }) {
@@ -57,6 +58,7 @@ export default function DesktopLayout({ children }: { children: ReactNode }) {
               href={item.href}
               className="block px-5 py-2.5 text-sm font-medium transition-colors hover:bg-white/5"
               style={{ color: "var(--text-secondary)" }}
+              {...(item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
             >
               {item.label}
             </Link>
