@@ -1,3 +1,9 @@
+> # ⚠️ DEPRECATED (2026-05-27)
+>
+> This app has been **superseded by [olympic-paints-pulse-v2](https://github.com/FlomaticAuto/olympic-paints-pulse-v2)** (`olympic-paints-pulse-v2.vercel.app`).
+>
+> The PULSE Python pipeline (`publish-web`) no longer feeds this repo — its data is frozen at 2026-05-20. The scorecard and daily views now live on the v2 app. This repo is archived for history only. Do not deploy or update it.
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
